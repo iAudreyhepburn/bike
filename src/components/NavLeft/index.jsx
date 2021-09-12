@@ -3,44 +3,42 @@ import MenuConfig from '../../config/menuConfig';
 import { Menu } from 'antd';
 
 import { NavLink } from 'react-router-dom';
-import './index.less'
+import './index.less';
 const { SubMenu } = Menu;
 export default class NavLeft extends React.Component {
-    componentWillMount() {
-        const menuTreeNode = this.renderMenu(MenuConfig);
-        this.setState({
-            menuTreeNode
-        })
-    }
-    //菜单渲染
-    renderMenu = (data) => {
-        return data.map((item) => {
-            if (item.children) {
-                return (
-                    <SubMenu key={item.key} title={item.title} >
-                        {this.renderMenu(item.children)}
-                    </SubMenu>
-                )
-            }
-            return <Menu.Item key={item.key} >
-                <NavLink to={item.key}>{item.title}</NavLink>
-
-            </Menu.Item>
-        })
-    }
-
-    render() {
+  componentDidMount() {
+    const menuTreeNode = this.renderMenu(MenuConfig);
+    this.setState({
+      menuTreeNode,
+    });
+  }
+  //菜单渲染
+  renderMenu = (data) => {
+    return data.map((item) => {
+      if (item.children) {
         return (
-            <div>
-                <div className="logo">
-                    <img src='/assets/logo-ant.svg' alt='' />
-                    <h1>Imooc MS</h1>
-                </div>
-                <Menu theme="dark">
-                    {this.state.menuTreeNode}
-                </Menu>
+          <SubMenu key={item.key} title={item.title}>
+            {this.renderMenu(item.children)}
+          </SubMenu>
+        );
+      }
+      return (
+        <Menu.Item key={item.key}>
+          <NavLink to={item.key}>{item.title}</NavLink>
+        </Menu.Item>
+      );
+    });
+  };
 
-            </div >
-        )
-    }
+  render() {
+    return (
+      <div>
+        <div className="logo">
+          <img src="/assets/logo-ant.svg" alt="" />
+          <h1>Imooc MS</h1>
+        </div>
+        <Menu theme="dark">{this.menuTreeNode}</Menu>
+      </div>
+    );
+  }
 }
