@@ -6,6 +6,5 @@ WORKDIR /app
 COPY ./docker/nginx.config /etc/nginx/conf.d/default.conf
 COPY ./dist .
 
-USER nginx
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
