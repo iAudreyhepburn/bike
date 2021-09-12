@@ -5,7 +5,7 @@ export default class Axios {
             JsonP(options.url, {
                 param: 'callback'
             }, function (err, response) {
-                if (response.countryEn == 'China') {
+                if (response.countryEn === 'China') {
                     resolve(response);
                 } else {
                     reject(response.message);

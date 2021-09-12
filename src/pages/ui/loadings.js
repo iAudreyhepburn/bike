@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button, Spin, Alert } from 'antd';
+import { Card, Spin, Alert } from 'antd';
 import Icon from '@ant-design/icons';
 import './ui.less'
 
@@ -42,9 +42,8 @@ export default class Loadings extends Component {
                             type="warning"
                         />
                     </Spin>
-
                 </Card>
-            </div>
+            </div >
         );
     }
 }

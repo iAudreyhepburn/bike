@@ -22,7 +22,7 @@ export default class Header extends React.Component {
         axios.jsonp({
             url: 'https://www.tianqiapi.com/api?version=v1&appid=21375891&appsecret=fTYv7v5E&city=' + encodeURIComponent(city)
         }).then((res) => {
-            if (res.countryEn == 'China') {
+            if (res.countryEn === 'China') {
                 let data1 = res.data[5];
                 this.setState({
                     dayPictureUrl: data1.wea_img,
