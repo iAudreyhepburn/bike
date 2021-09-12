@@ -4,6 +4,9 @@ import './index.less';
 import Util from '../../utils/utils';
 import axios from '../../axios';
 export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   state = { userName: '', sysTime: '', dayPictureUrl: '', weather: '' };
   componentDidMount() {
     this.setState({

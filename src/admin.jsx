@@ -6,6 +6,10 @@ import NavLeft from './components/NavLeft'
 import './style/common.less'
 // import Home from './pages/home'
 export default class Admin extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
     render() {
         return (
             <Row className="container">

@@ -4,8 +4,15 @@ import { Menu } from 'antd';
 
 import { NavLink } from 'react-router-dom';
 import './index.less';
+
+import logo from '@/resource/assets/logo-ant.svg';
+
 const { SubMenu } = Menu;
 export default class NavLeft extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   componentDidMount() {
     const menuTreeNode = this.renderMenu(MenuConfig);
     this.setState({
@@ -34,10 +41,10 @@ export default class NavLeft extends React.Component {
     return (
       <div>
         <div className="logo">
-          <img src="/assets/logo-ant.svg" alt="" />
+          <img src={logo} alt="" />
           <h1>Imooc MS</h1>
         </div>
-        <Menu theme="dark">{this.menuTreeNode}</Menu>
+        <Menu theme="dark">{this.state.menuTreeNode}</Menu>
       </div>
     );
   }
