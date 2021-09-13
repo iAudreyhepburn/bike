@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Card, Spin, Alert } from 'antd';
-import Icon from '@ant-design/icons';
+import { LoadingOutlined } from '@ant-design/icons';
 import './ui.less'
 
 export default class Loadings extends Component {
     render() {
-        const icon = <Icon type="loading" style={{ fontSize: 24 }} />
-        const iconLoading = <Icon type="loading" style={{ fontSize: 24 }} />
+        const icon = <LoadingOutlined style={{ fontSize: 24 }} />
         return (
             <div>
                 <Card title="Spin的用法" className="card-wrap">
@@ -35,7 +34,7 @@ export default class Loadings extends Component {
                             type="warning"
                         />
                     </Spin>
-                    <Spin indicator={iconLoading}>
+                    <Spin indicator={icon}>
                         <Alert
                             message="React"
                             description="欢迎来到React高级实战课程"

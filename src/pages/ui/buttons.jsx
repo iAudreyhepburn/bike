@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import { Card, Button, Radio } from 'antd';
+import {
+    PlusOutlined,
+    EditOutlined,
+    DeleteOutlined,
+    SearchOutlined,
+    DownloadOutlined,
+    RightOutlined,
+    LeftOutlined,
+} from '@ant-design/icons';
 import './ui.less'
 class Buttons extends Component {
     state = {
@@ -27,12 +36,12 @@ class Buttons extends Component {
                     <Button disabled>Imooc</Button>
                 </Card>
                 <Card title="图形按钮" className="card-wrap">
-                    <Button icon="plus">创建</Button>
-                    <Button icon="edit">编辑</Button>
-                    <Button icon="delete">删除</Button>
-                    <Button shape="circle" icon="search"></Button>
-                    <Button type="primary" icon="search">搜索</Button>
-                    <Button type="primary" icon="download">下载</Button>
+                    <Button><PlusOutlined />创建</Button>
+                    <Button><EditOutlined />编辑</Button>
+                    <Button><DeleteOutlined />删除</Button>
+                    <Button shape="circle"><SearchOutlined /></Button>
+                    <Button type="primary"><SearchOutlined />搜索</Button>
+                    <Button type="primary"><DownloadOutlined />下载</Button>
                 </Card>
                 <Card title="Loading按钮" className="card-wrap">
                     <Button type="primary" loading={this.state.loading}>确定</Button>
@@ -43,8 +52,8 @@ class Buttons extends Component {
                 </Card>
                 <Card title="按钮组" style={{ marginBottom: 10 }}>
                     <Button.Group>
-                        <Button type="primary" icon="left">返回</Button>
-                        <Button type="primary" icon="right">前进</Button>
+                        <Button type="primary"><LeftOutlined />返回</Button>
+                        <Button type="primary">前进<RightOutlined /></Button>
                     </Button.Group>
                 </Card>
                 <Card title="按钮尺寸" className="card-wrap">
