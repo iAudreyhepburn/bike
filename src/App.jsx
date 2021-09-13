@@ -7,11 +7,7 @@ class App extends Component {
     this.state = {};
   }
   render() {
-    return (
-      <div>
-        {this.props.children}
-      </div>
-    );
+    return <div>{this.props.children}</div>;
   }
 }
 

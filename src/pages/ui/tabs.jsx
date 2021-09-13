@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Card, message, Tabs } from 'antd';
-import { AppleOutlined, LoginOutlined, PlusCircleOutlined } from '@ant-design/icons'
+import {
+    AppleOutlined,
+    LoginOutlined,
+    PlusCircleOutlined,
+} from '@ant-design/icons';
 import './ui.less';
 const { TabPane } = Tabs;
 export default class tabs extends Component {
@@ -10,36 +14,36 @@ export default class tabs extends Component {
     }
     newTabIndex = 0;
     handleCallback = (key) => {
-        message.info("Hi,您选择了页签" + key);
-    }
+        message.info('Hi,您选择了页签' + key);
+    };
     componentWillMount() {
         const panes = [
             {
                 title: 'Tab 1',
                 content: 'Tab 1',
-                key: '1'
+                key: '1',
             },
             {
                 title: 'Tab 2',
                 content: 'Tab 2',
-                key: '2'
+                key: '2',
             },
             {
                 title: 'Tab 3',
                 content: 'Tab 3',
-                key: '3'
-            }
-        ]
+                key: '3',
+            },
+        ];
         this.setState({
             activeKey: panes[0].key,
-            panes
-        })
+            panes,
+        });
     }
     onChange = (activeKey) => {
         this.setState({
-            activeKey
-        })
-    }
+            activeKey,
+        });
+    };
     onEdit = (targetKey, action) => {
         this[action](targetKey);
     };
@@ -48,14 +52,18 @@ export default class tabs extends Component {
         const { panes } = this.state;
         const activeKey = `newTab${this.newTabIndex++}`;
         const newPanes = [...panes];
-        newPanes.push({ title: activeKey, content: 'Content of new Tab', key: activeKey });
+        newPanes.push({
+            title: activeKey,
+            content: 'Content of new Tab',
+            key: activeKey,
+        });
         this.setState({
             panes: newPanes,
             activeKey,
         });
     };
 
-    remove = targetKey => {
+    remove = (targetKey) => {
         const { panes, activeKey } = this.state;
         let newActiveKey = activeKey;
         let lastIndex;
@@ -64,7 +72,7 @@ export default class tabs extends Component {
                 lastIndex = i - 1;
             }
         });
-        const newPanes = panes.filter(pane => pane.key !== targetKey);
+        const newPanes = panes.filter((pane) => pane.key !== targetKey);
         if (newPanes.length && newActiveKey === targetKey) {
             if (lastIndex >= 0) {
                 newActiveKey = newPanes[lastIndex].key;
@@ -79,7 +87,7 @@ export default class tabs extends Component {
     };
     render() {
         return (
-            <div>
+            <>
                 <Card title="Tab页签" className="card-wrap">
                     <Tabs defaultActivekey="1" onChange={this.handleCallback}>
                         <TabPane tab="tab 1" key="1">
@@ -95,13 +103,37 @@ export default class tabs extends Component {
                 </Card>
                 <Card title="Tab带图的页签" className="card-wrap">
                     <Tabs defaultActivekey="1" onChange={this.handleCallback}>
-                        <TabPane tab={<span><AppleOutlined />tab 1</span>} key="1">
+                        <TabPane
+                            tab={
+                                <span>
+                                    <AppleOutlined />
+                                    tab 1
+                                </span>
+                            }
+                            key="1"
+                        >
                             欢迎学习React课程
                         </TabPane>
-                        <TabPane tab={<span><LoginOutlined />tab 1</span>} key="2">
+                        <TabPane
+                            tab={
+                                <span>
+                                    <LoginOutlined />
+                                    tab 1
+                                </span>
+                            }
+                            key="2"
+                        >
                             欢迎学习React课程
                         </TabPane>
-                        <TabPane tab={<span><PlusCircleOutlined />tab 1</span>} key="3">
+                        <TabPane
+                            tab={
+                                <span>
+                                    <PlusCircleOutlined />
+                                    tab 1
+                                </span>
+                            }
+                            key="3"
+                        >
                             React 很 nice.
                         </TabPane>
                     </Tabs>
@@ -114,17 +146,12 @@ export default class tabs extends Component {
                         type="editable-card"
                         onEdit={this.onEdit}
                     >
-                        {
-                            this.state.panes.map((panel) => {
-                                return <TabPane
-                                    tab={panel.title}
-                                    key={panel.key}
-                                />
-                            })
-                        }
+                        {this.state.panes.map((panel) => {
+                            return <TabPane tab={panel.title} key={panel.key} />;
+                        })}
                     </Tabs>
                 </Card>
-            </div >
+            </>
         );
     }
 }
