@@ -25,7 +25,7 @@
 .header .breadcrumb .breadcrumb-title::after {
   position: absolute;
   content: '';
-  left: 93px;
+  left: calc(7vw - 18px);
   top: 39px;
   border-top: 9px solid #fff;
   border-left: 9px solid transparent;
