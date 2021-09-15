@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, Checkbox, Form, Input, message } from 'antd';
+import { Button, Card, Checkbox, Form, Input, message, Row } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 const FormItem = Form.Item;
 export default class FormLogin extends Component {
@@ -48,10 +48,13 @@ export default class FormLogin extends Component {
             <FormItem name="userPwd" initialValue="123456" rules={[{}]}>
               <Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" placeholder="请输入密码" />
             </FormItem>
-            <FormItem name="remember" initialValue={true} valuePropName="checked">
-              <Checkbox>记住密码</Checkbox>
+            <Row justify="space-between">
+              {/* 重点是带有 name 的 formitem里不能有多于一个子节点 */}
+              <FormItem name="remember" initialValue={true} valuePropName="checked">
+                <Checkbox>记住密码</Checkbox>
+              </FormItem>
               <a href="#" style={{ float: 'right' }}>忘记密码</a>
-            </FormItem>
+            </Row>
             <FormItem>
               <Button type="primary" onClick={this.getValidateValues}>登录</Button>
             </FormItem>
