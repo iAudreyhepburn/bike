@@ -2,12 +2,25 @@
 /** 常用字体大小 **/
 .header {
   background-color: #fff;
+  flex: 1;
 }
 .header .header-top {
   height: 60px;
   line-height: 60px;
   padding: 0 20px;
   text-align: right;
+}
+.header .header-top .logo {
+  line-height: 60px;
+  text-align: left;
+  font-size: 18px;
+}
+.header .header-top .logo img {
+  height: 40px;
+  vertical-align: middle;
+}
+.header .header-top .logo span {
+  margin-left: 5px;
 }
 .header .header-top a {
   margin-left: 40px;
@@ -36,4 +49,8 @@
 }
 .header .breadcrumb .weather .date {
   margin-right: 10px;
+}
+.simple-page .header-top {
+  background: #1890ff;
+  color: #fff;
 }

@@ -5,7 +5,7 @@ import { Menu } from 'antd';
 import { NavLink } from 'react-router-dom';
 import './index.less';
 
-import logo from '@/resource/assets/logo-ant.svg';
+import logo from '/assets/logo-ant.svg';
 
 const { SubMenu } = Menu;
 export default class NavLeft extends React.Component {

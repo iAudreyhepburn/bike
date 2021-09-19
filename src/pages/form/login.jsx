@@ -7,7 +7,7 @@ export default class FormLogin extends Component {
   formRef = React.createRef();
 
   getValidateValues = async () => {
-    const form = this.formRef.current;//获取到所以属性值
+    const form = this.formRef.current;//获取到所有属性值
     const userInfo = this.formRef.current.getFieldsValue();
     // 使用 validateFields 获取验证后字段值
     try {
