@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuConfig from '../../config/menuConfig';
+import MenuConfig from '../../config/menuConfig-1';
 import { Menu } from 'antd';
 
 import { NavLink } from 'react-router-dom';
