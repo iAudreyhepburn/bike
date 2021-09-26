@@ -47,7 +47,7 @@ export default class FilterForm extends Component {
           </FormItem>;
           formItemList.push(end_time)
         } else if (item.type == 'INPUT') {
-          const INPUT = <FormItem label={label} key={field} name={field} initialValue={initialValue} ref={this.formRef}>
+          const INPUT = <FormItem label={label} key={field} name={field} initialValue={initialValue}>
             <Input type="text" placeholder={placeholder} />
           </FormItem>;
           formItemList.push(INPUT)

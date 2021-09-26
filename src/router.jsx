@@ -58,7 +58,7 @@ export default class IRouter extends Component {
                     <Route path="/ui/gallery" component={Gallery} />
                     <Route path="/ui/carousel" component={Carousel} />
                     <Route path="/form/login" component={FormLogin} />
-                    <Route path="/form/register" component={FormRegister} />
+                    <Route path="/form/reg" component={FormRegister} />
                     <Route path="/table/basic" component={BasicTable} />
                     <Route path="/table/high" component={HighTable} />
                     <Route path="/city" component={City} />
