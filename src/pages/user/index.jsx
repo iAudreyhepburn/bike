@@ -63,10 +63,12 @@ export default class User extends Component {
       this.setState({
         type,
         isVisible: true,
-        title: '创建员工'
+        title: '创建员工',
+        userInfo: {}
       })
     } else if (type == 'edit') {
-      if (!item) {
+      console.log("selectedItem", this.state.selectedItem);
+      if (item.length < 1) {
         Modal.info({
           title: '提示',
           content: '请选择一个用户'
@@ -129,7 +131,7 @@ export default class User extends Component {
 
   //创建员工提交
   handleSubmit = () => {
-    let item = this.state.selectedItem;
+    // let item = this.state.selectedItem;
     let type = this.state.type;
     let data = this.formRef.current.formRef.current.getFieldsValue();
     axios.ajax({
@@ -139,7 +141,9 @@ export default class User extends Component {
       this.formRef.current.formRef.current.resetFields();
       if (res.code == 0) {
         this.setState({
-          isVisible: false
+          isVisible: false,
+          selectedRowKeys: [],
+          selectedItem: []
         })
         this.requestList();
       }
@@ -243,6 +247,7 @@ export default class User extends Component {
             })
           }}
           width={600}
+          destroyOnClose
           {...footer}
         >
           <UserForm userInfo={this.state.userInfo} type={this.state.type} ref={this.formRef} />

@@ -24,22 +24,31 @@ export default class ETable extends Component {
         }
       } else {
         selectedIds = [record.id];
-        selectedRowKeys = [index];
+        selectedRowKeys = [record.id];
         selectedItem = [record];
       }
-      this.props.updateSelectedItem(selectedRowKeys, selectedItem || {}, selectedIds);
+      this.props.updateSelectedItem(selectedRowKeys, selectedItem, selectedIds);
     } else {
-      let selectedRowKeys = [index];
-      let selectedItem = record;
-      this.props.updateSelectedItem(selectedRowKeys, selectedItem || {});
+      let selectedRowKeys = [record.id];
+      let selectedItem = [record];
+      this.props.updateSelectedItem(selectedRowKeys, selectedItem);
     }
+  }
+  onSelectChange = (record, selected, selectedRows) => {
+    let selectedRowKeys = this.props.selectedRowKeys;
+    console.log("selectedRowKeys......", selectedRowKeys);
+    console.log("selectedRows......", selectedRows);
+    console.log("record......", record);
+
+    this.props.updateSelectedItem([...selectedRowKeys, record.id - 1], selectedRows);
   }
   tableInit = () => {
     let row_selection = this.props.rowSelection;
     let selectedRowKeys = this.props.selectedRowKeys;
     const rowSelection = {
       type: 'radio',
-      selectedRowKeys
+      selectedRowKeys,
+      onSelect: this.onSelectChange
     }
     if (row_selection === false || row_selection === null) {
       row_selection = false;

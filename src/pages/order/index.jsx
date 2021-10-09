@@ -9,7 +9,8 @@ const FormItem = Form.Item;
 export default class Order extends Component {
   state = {
     orderInfo: {},
-    orderConfirmVisible: false
+    orderConfirmVisible: false,
+    selectedRowKeys: []
   }
 
   params = {
@@ -50,23 +51,6 @@ export default class Order extends Component {
   requestList = () => {
     let _this = this;
     axios.requestList(this, '/order/list', this.params, true)
-    // axios.ajax({
-    //   url: '/order/list',
-    //   data: {
-    //     params: this.params
-    //   }
-    // }).then(res => {
-    //   this.setState({
-    //     list: res.result.item_list.map((item, index) => {
-    //       item.key = index;
-    //       return item;
-    //     }),
-    //     pagination: Utils.pagination(res, (current) => {
-    //       _this.params.page = current;
-    //       _this.requestList();
-    //     })
-    //   })
-    // })
   }
   //订单结束确认
   handleConfirm = () => {
@@ -114,13 +98,7 @@ export default class Order extends Component {
       }
     })
   }
-  // onRowClick = (record, index) => {
-  //   let selectKey = [index];
-  //   this.setState({
-  //     selectedRowKeys: selectKey,
-  //     selectedItem: record
-  //   })
-  // }
+
   openOrderDetail = () => {
     let item = this.state.selectedItem;
     if (!item) {
@@ -187,11 +165,6 @@ export default class Order extends Component {
       wrapperCol: { span: 19 }
     }
 
-    // const { selectedRowKeys } = this.state;
-    // const rowSelection = {
-    //   type: 'radio',
-    //   selectedRowKeys
-    // }
     console.log("selectedRowKeys", this.state.selectedRowKeys)
     console.log("selectedItem", this.state.selectedItem)
     console.log("selectedIds", this.state.selectedIds)
@@ -210,26 +183,11 @@ export default class Order extends Component {
             columns={columns}
             dataSource={this.state.list}
             pagination={this.state.pagination}
-            // rowSelection={rowSelection}
             selectedIds={this.state.selectedIds}
             selectedRowKeys={this.state.selectedRowKeys}
             selectedItem={this.state.selectedItem}
             rowSelection='checkbox'
           />
-          {/* <Table
-            bordered
-            columns={columns}
-            dataSource={this.state.list}
-            pagination={this.state.pagination}
-            rowSelection={rowSelection}
-            onRow={(record, index) => {
-              return {
-                onClick: () => {
-                  this.onRowClick(record, index);
-                }
-              };
-            }}
-          /> */}
         </div>
         <Modal
           title="结束订单"
@@ -261,43 +219,3 @@ export default class Order extends Component {
     )
   }
 }
-// class FilterForm extends Component {
-//   render() {
-//     return (
-//       <Form layout="inline" ref={this.formRef}>
-//         <FormItem label="城市">
-//           <Select
-//             style={{ width: 100 }}
-//             placeholder="全部"
-//           >
-//             <Option value="">全部</Option>
-//             <Option value="1">北京市</Option>
-//             <Option value="2">天津市</Option>
-//             <Option value="3">深圳市</Option>
-//           </Select>
-//         </FormItem>
-//         <FormItem label="订单时间">
-//           <DatePicker name="start_time" showTime format="YYYY-MM-DD HH:mm:ss" />
-//         </FormItem>
-//         <FormItem>
-//           <DatePicker name="end_time" showTime format="YYYY-MM-DD HH:mm:ss" />
-//         </FormItem>
-//         <FormItem label="订单状态">
-//           <Select
-//             style={{ width: 80 }}
-//             placeholder="全部"
-//             name="order_status"
-//           >
-//             <Option value="">全部</Option>
-//             <Option value="1">进行中</Option>
-//             <Option value="2">结束行程</Option>
-//           </Select>
-//         </FormItem>
-//         <FormItem>
-//           <Button type="primary" style={{ margin: '0 20px' }}>查询</Button>
-//           <Button>重置</Button>
-//         </FormItem>
-//       </Form>
-//     )
-//   }
-// }
